@@ -6,7 +6,7 @@ import os
 import streamlit as st
 import uuid
 
-import opensearch_chat_bedrock_claude_v2 as llm_app
+import opensearch_chat_bedrock_claude as llm_app
 
 
 BEDROCK_MODEL_ID = os.environ.get('BEDROCK_MODEL_ID', 'anthropic.claude-v2:1')
