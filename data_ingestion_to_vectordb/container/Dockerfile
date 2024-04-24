@@ -4,9 +4,10 @@ FROM python:3.10.13-slim
 # significant amount of space. These optimizations save a fair
 # amount of space in the image, which reduces start up time.
 RUN pip --no-cache-dir install -U pip
-RUN pip --no-cache-dir install boto3==1.33.9 \
-    langchain==0.1.4 \
-    langchain-community==0.0.20 \
+RUN pip --no-cache-dir install boto3>=1.26.159 \
+    langchain==0.1.16 \
+    langchain-aws==0.1.0 \
+    langchain-community==0.0.34 \
     SQLAlchemy==2.0.28 \
     opensearch-py==2.2.0 \
     beautifulsoup4==4.12.3

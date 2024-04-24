@@ -10,7 +10,7 @@ import boto3
 
 from langchain_community.vectorstores import OpenSearchVectorSearch
 from langchain_community.embeddings import BedrockEmbeddings
-from langchain_community.llms import Bedrock
+from langchain_aws import ChatBedrock as BedrockChat
 from langchain.chains import ConversationalRetrievalChain
 from langchain.prompts import PromptTemplate
 
@@ -37,7 +37,7 @@ def _get_credentials(secret_id: str, region_name: str) -> str:
 
 
 def build_chain():
-  region = os.environ["AWS_REGION"]
+  region = os.environ.get('AWS_REGION', 'us-east-1')
   opensearch_secret = os.environ["OPENSEARCH_SECRET"]
   opensearch_domain_endpoint = os.environ["OPENSEARCH_DOMAIN_ENDPOINT"]
   opensearch_index = os.environ["OPENSEARCH_INDEX"]
@@ -61,12 +61,12 @@ def build_chain():
 
   retriever = opensearch_vector_search.as_retriever(search_kwargs={"k": 3})
 
-  model_id = os.environ.get('BEDROCK_MODEL_ID', 'anthropic.claude-v2')
-  llm = Bedrock(
+  model_id = os.environ.get('BEDROCK_MODEL_ID', 'anthropic.claude-v2:1')
+  llm = BedrockChat(
     model_id=model_id,
     region_name=region,
     model_kwargs={
-      "max_tokens_to_sample": 512,
+      "max_tokens": 512,
       "temperature": 0,
       "top_p": 0.9
     }
@@ -105,7 +105,7 @@ def build_chain():
 
 
 def run_chain(chain, prompt: str, history=[]):
-  return chain({"question": prompt, "chat_history": history})
+  return chain.invoke({"question": prompt, "chat_history": history})
 
 
 if __name__ == "__main__":
