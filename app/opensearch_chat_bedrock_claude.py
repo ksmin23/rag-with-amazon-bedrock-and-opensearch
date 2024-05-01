@@ -141,6 +141,11 @@ if __name__ == "__main__":
     elif (len(chat_history) == MAX_HISTORY_LENGTH):
       chat_history.pop(0)
     result = run_chain(qa, query, chat_history)
+    #XXX: Be sure to preserve message formats when using the Anthropic Claude Messages API.
+    # Otherwise, you will enconter the following error,
+    #   ValueError: Error raised by bedrock service: An error occurred (ValidationException) when calling the InvokeModel operation:
+    #   messages: roles must alternate between "user" and "assistant", but found multiple "user" roles in a row
+    # For more information, see https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-anthropic-claude-messages.html
     chat_history.extend([HumanMessage(content=query), AIMessage(content=result["answer"])])
     print(bcolors.OKGREEN + result['answer'] + bcolors.ENDC)
     if 'context' in result:
