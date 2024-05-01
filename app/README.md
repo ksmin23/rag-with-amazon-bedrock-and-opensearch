@@ -20,7 +20,7 @@ SageMaker Studio provides a convenient platform to host the Streamlit web applic
    export OPENSEARCH_SECRET="<YOUR-OPENSEARCH-SECRET>"
    export OPENSEARCH_DOMAIN_ENDPOINT="https://{domain-name}.{region}.es.amazonaws.com"
    export OPENSEARCH_INDEX="llm_rag_embeddings"
-   export BEDROCK_MODEL_ID="anthropic.claude-v2:1"
+   export BEDROCK_MODEL_ID="anthropic.claude-3-sonnet-20240229-v1:0"
    ```
 4. When the application runs successfully, you’ll see an output similar to the following (the IP addresses you will see will be different from the ones shown in this example). Note the port number (typically `8501`) from the output to use as part of the URL for app in the next step.
    ```
