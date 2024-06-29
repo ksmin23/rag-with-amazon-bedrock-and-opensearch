@@ -27,7 +27,7 @@ Some models require some additional information and take some time before you ar
 2. Open SageMaker Studio and then open a new terminal.
 3. Run the following commands on the terminal to clone the code repository for this project:
    ```
-   git clone https://github.com/ksmin23/rag-with-amazon-bedrock-and-opensearch.git
+   git clone --depth=1 https://github.com/ksmin23/rag-with-amazon-bedrock-and-opensearch.git
    ```
 4. Open `data_ingestion_to_opensearch` notebook and Run it. (For more information, see [here](./data_ingestion_to_vectordb/data_ingestion_to_opensearch.ipynb))
 5. Run Streamlit application. (For more information, see [here](./app/README.md))
@@ -45,5 +45,5 @@ Some models require some additional information and take some time before you ar
   * [LangChain](https://python.langchain.com/docs/get_started/introduction.html) - A framework for developing applications powered by language models.
   * [Streamlit](https://streamlit.io/) - A faster way to build and share data apps
   * [Improve search relevance with ML in Amazon OpenSearch Service Workshop](https://catalog.workshops.aws/semantic-search/en-US) - Module 7. Retrieval Augmented Generation
-  * [rag-with-amazon-opensearch](https://github.com/ksmin23/rag-with-amazon-opensearch) - Question Answering application with Large Language Models (LLMs) and Amazon OpenSearch Service
-  * [rag-with-postgresql-pgvector](https://github.com/ksmin23/rag-with-postgresql-pgvector) - Question Answering application with Large Language Models (LLMs) and Amazon Aurora Postgresql
+  * [rag-with-amazon-opensearch-and-sagemaker](https://github.com/aws-samples/rag-with-amazon-opensearch-and-sagemaker) - Question Answering application with Large Language Models (LLMs) and Amazon OpenSearch Service
+  * [rag-with-amazon-postgresql-using-pgvector](https://github.com/aws-samples/rag-with-amazon-postgresql-using-pgvector) - Question Answering application with Large Language Models (LLMs) and Amazon Aurora Postgresql
